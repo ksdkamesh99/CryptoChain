@@ -16,11 +16,11 @@ class CryptoChain:
 		'amount':'100'
 }]
 		prevoius_hash='0000'
-		self.block.append(create_block(1,transactions,prevoius_hash))
+		self.blocks.append(self.create_block(1,transactions,prevoius_hash))
 
 	def create_block(self,index,transactions,prevoius_hash):
-		merkle_root=merkle_root(transactions)
-		nounce=mining(index,transactions,prevoius_hash,merkle_root)
+		merkle_root=self.merkle_root(transactions)
+		nounce=self.mining(index,transactions,prevoius_hash,merkle_root)
 		string=str(index)+str(transactions)+str(nounce)+str(prevoius_hash)+str(merkle_root)
 		current_hash=hash(string)
 		block={}
